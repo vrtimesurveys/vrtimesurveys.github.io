@@ -6,8 +6,8 @@ var state = {
 	imageIndex: 0,
     taskInputs: {}, 
     taskOutputs: [],
-	outlierOutputs: [],
-	outlierNumber: 0,
+	//outlierOutputs: [],
+	//outlierNumber: 0,
     assignmentId: gup("assignmentId"),
     workerId: gup("workerId"),
     hitId: gup("hitId"),
@@ -109,19 +109,19 @@ function nextTask() {
 		else {
             //failedValidation = custom.validateTask(getTaskInputs(state.taskIndex), state.taskIndex, getTaskOutputs(state.taskIndex));
 			if(state.imageIndex==15 && state.blockIndex==1){
-				console.log("end of trial validation, press detected: ", state.pressDuringThisTrial)
-				if(state.taskIndex<3 && state.pressDuringThisTrial==0){
-					failedValidation=true;
-					failedValidation.errorMessage="Didn't find outliers in both blocks";
-					generateMessage("negative", failedValidation.errorMessage);
-					console.log("failed outlier task")
-					$('.subtask').hide();
-					$('#next-button').hide();
-					trialSurvey.hideTrialSurvey();
-					$("#accuracy-error-message").show();
-				}else{
+	//			console.log("end of trial validation, press detected: ", state.pressDuringThisTrial)
+		//		if(state.taskIndex<3 && state.pressDuringThisTrial==0){
+		//			failedValidation=true;
+		//			failedValidation.errorMessage="Didn't find outliers in both blocks";
+		//			generateMessage("negative", failedValidation.errorMessage);
+		//			console.log("failed outlier task")
+		//			$('.subtask').hide();
+		//			$('#next-button').hide();
+		//			trialSurvey.hideTrialSurvey();
+		//			$("#accuracy-error-message").show();
+		//		}else{
 					failedValidation = trialSurvey.validateTask();
-				}				
+		//		}				
 			}else{
 				failedValidation = false;
 			}				
@@ -445,34 +445,34 @@ $(document).ready(function() {
 			trialSurvey.loadTrialSurvey();
             setupButtons(config);
         });
-		$(document).keypress(function(e){							//CUSTOM TRACK OF KEY PRESSES
-			var pressT=(String.fromCharCode(e.which)=="t" ? 1 : 0);
-			pressT=true;
-			//if(pressT) console.log("T press detected")
-			//	else console.log("press detected",e.which)
-			
-			if(pressT && $("#show-image-subtask").is(":visible") && !state.pressReceived){ 
-				
-				
-				document.getElementById("show-image-subtask").style.border = "thick solid #0000FF";
-				setTimeout(function(){document.getElementById("show-image-subtask").style.border = "none";},100);
-				state.pressReceived = true;
-				setTimeout(function(){state.pressReceived = false;},1250)
-				
-				state.outlierOutputs[state.outlierNumber] =  {
-				  taskIndex: state.taskIndex,
-				  blockIndex: state.blockIndex,
-				  imageIndex: state.imageIndex,
-				  outlierTime: new Date().getTime(),
-				  keyPressed: e.which
-				  //outlier: state.taskInputs[taskIndex]
-				};
-				state.outlierNumber++;
-				state.pressDuringThisTrial++;
-				
-				//console.log("press detected ",state.pressDuringThisTrial);
-			}
-		});
+		//$(document).keypress(function(e){							//CUSTOM TRACK OF KEY PRESSES
+		//	var pressT=(String.fromCharCode(e.which)=="t" ? 1 : 0);
+		//	pressT=true;
+		//	//if(pressT) console.log("T press detected")
+		//	//	else console.log("press detected",e.which)
+		//	
+		//	if(pressT && $("#show-image-subtask").is(":visible") && !state.pressReceived){ 
+		//		
+		//		
+		//		document.getElementById("show-image-subtask").style.border = "thick solid #0000FF";
+		//		setTimeout(function(){document.getElementById("show-image-subtask").style.border = "none";},100);
+		//		state.pressReceived = true;
+		//		setTimeout(function(){state.pressReceived = false;},1250)
+		//		
+		//		state.outlierOutputs[state.outlierNumber] =  {
+		//		  taskIndex: state.taskIndex,
+		//		  blockIndex: state.blockIndex,
+		//		  imageIndex: state.imageIndex,
+		//		  outlierTime: new Date().getTime(),
+		//		  keyPressed: e.which
+		//		  //outlier: state.taskInputs[taskIndex]
+		//		};
+		//		state.outlierNumber++;
+		//		state.pressDuringThisTrial++;
+		//		
+		//		//console.log("press detected ",state.pressDuringThisTrial);
+		//	}
+		//});
     });
 });
 
