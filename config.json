@@ -9,7 +9,7 @@
         "steps": [
             "You will be shown several paired blocks of images.",
             "During each block the images will change automatically after a fixed time.",
-            "After each pair of blocks you will be asked several questions"
+            "After each pair of blocks you will be asked several questions you will have to answer."
         ],
         "images": ["demo_face_sentinels.gif"]
     },
