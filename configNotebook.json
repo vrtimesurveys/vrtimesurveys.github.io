@@ -18,7 +18,7 @@
     "hitCreation": {
         "title": "Image blocks",
         "description": "Watch several blocks of images and answer questions about them",
-        "numTasks": 1,
+        "numTasks": 24,
         "numAssignments": 1,
         "rewardAmount": "2.00",
         "keywords": "images, 2D, questions",
